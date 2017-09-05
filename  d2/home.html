@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+
+
+<html ng-app="phonecatApp">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Image Gallery</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./css/bootstrap.css" >
+<script src="./js/angular.min.js" type="text/javascript"></script>
+<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+<script src="./app.js" type="text/javascript" ></script>
+
+
+</head>
+<body ng-controller="selection" >
+<div class="container">
+  <div class="row">
+    <div class="col-3 panel panel-default " ng-repeat="image in images" >
+    <a class="panel-body" data-toggle="modal" data-target="#myModal1">
+ 
+       <img class="col-md-6 " src="{{image.src}}">
+          <div class="row col-6">
+	       <small class=" title col-12 nopadding">{{image.intro}}</small>
+	       <small class="col-md-12">{{image.seller}}</small>
+	       <span  class="a-color-base sx-zero-spacing">
+       		<span class="sx-price sx-price-large">
+            	<sup class="sx-price-currency">$</sup>
+                <span class="sx-price-whole">{{image.nprice}}</span>
+                <sup class="sx-price-fractional">99</sup>
+	            </span>
+	        </span>
+	        <span  class="a-text-strike">${{image.oprice}}.99</span>
+	        <i class="a-icon a-icon-prime a-icon-small s-align-text-bottom" aria-label="Prime">
+	        <!-- <span class="a-icon-alt">Prime</span> -->
+	        </i>
+
+			<div class="col-12 a-spacing-mini">
+	    
+	    	<i class="a-icon col-6 a-icon-star a-star-{{image.star}}">
+	    
+	    	</i>
+    <!-- <span class="a-letter-space"></span> -->
+    <div class=" a-size-small "> &nbsp; {{image.sales}}</div>
+    		</div>
+    	<div class="col-12">
+	    	<span class="a-color-secondary">
+	    	Get it by 
+	    	<span class="a-color-success ">
+	    	Tomorrow, Sep 7
+	    	</span>
+	    	</span>
+    	</div>
+
+     </div>
+    </a>
+    </div>
+    
+  </div>
+</div>
+<div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-success" id="myModalLabel">New Mission from Sven</h4>
+      </div>
+      <div class="modal-body broder-none text-center ">
+      <img src="./image/sven.png" alt="" width="120px" height="120px">
+        <p><h4>Please purchase the Arduino Kit for CC Lab.</h4>
+        </p>
+        <p><h4>You will select your kit from <font class=" text-success">1000</font> Arduino kits.</h4>
+        </p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default " data-dismiss="modal" ng-click="stupid()"> I'll quit the class  </button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" >Mission Accepted</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-success" id="myModalLabel">Warning from Brain</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p><h3>Why not find a <font class=" text-success">better one</font>?</h3></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal11"> I want this  </button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#myModal2">Find another one</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-success" id="myModalLabel">Warning from Brain</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p > <h3>Good choice !<font class=" text-success"> Go back and find another one</font></h3></p>
+        <!-- <p ng-if="please" ng-bind="please"></p> -->
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        
+        <button type="button" class="btn btn-success"  ng-click="lowPr()" >with lower price</button>
+        
+        <button type="button" class="btn btn-success"  ng-click="moreSales()" >with more sales </button>
+        <button type="button" class="btn btn-success"  ng-click="hiEv()" >with higher evaluation </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-warning" id="myModalLabel">Warning from Brain</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <h3>Are you sure this is the <font class=" text-warning">right one</font>?</h3>
+        
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal12"> I'm sure  </button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#myModal2">Ok I'll find another one</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-danger" id="myModalLabel">Warning! Warning!</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p><h3>Winston, I hope you take <font class=" text-danger">very serious consideration</font> for this choice</h3></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal13"> I want this  </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModal2">Find another one</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-danger" id="myModalLabel">Warning! Waaaaarning!</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p><h4>It seems you only take a second to decide this, right?</h4></p>
+         <p><h4>But why Winston? Is 
+         <font class=" text-danger">this</font> adruino kit really important to you?</h4></p>
+         <p><h4>There should be something more important than this kit isn't it? </h4></p>
+         <p><h4>Just try, try 
+         <font class=" text-danger">another</font>  kit, Winston.</h4></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal14"> I'm 100% sure I want this  </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#myModal2">Yeah, you're right</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal14" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center text-danger" id="myModalLabel">
+
+        Error! Error! Error! Error!</h4>
+      </div>
+      <div class="modal-body broder-none text-center text-muted">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p><h4>Why are you so calm and so decisive?</h4></p>
+        <p><h4> Winston, you know   
+         <font class=" text-danger">BIG BROTHOR</font> hates this</h4></p>
+         <p><h4>You are not ready to take his anger.</h4></p>
+         <p><h4>Here I give you another chance.</h4></p>
+         <p><h4>Go back and select 
+         <font class=" text-danger">another</font>  kit.</h4></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal15" ng-click="clear()"> I'm ready for his anger.</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" >Ok I'll be back</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal15" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title text-center text-danger" id="myModalLabel">
+
+        Error! Error! The Core is overheated!</h3>
+      </div>
+      <div class="modal-body broder-none text-center ">
+       <!-- <p> <h3>Is this the one you need?</h3></p> -->
+        <p><h4>You see, Winston, you have no selection now.</h4></p>
+        <p><h4> Is this the situation you want to see? </h4></p>
+         <p><h4>YOU know how to solve this, Winston</h4></p>
+         <p><h4>Just go back and make a new choice.</h4></p>
+         <p><h4>Come on, Winston 
+         <font class=" text-danger">DO IT</font> !</h4></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal16" ng-click="showHide()"> I'd rather DIE</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="reset()" >Well I will rechoose</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal fade bg-black"  id="myModal16" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header broder-none">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title text-center text-danger" id="myModalLabel">
+
+        Error! Error! Error!</h3>
+      </div>
+      <div class="modal-body broder-none text-center ">
+      <p> <h3>Is this the one you need?</h3></p> 
+        <p><h4>You see, Winston, you have no selection now.</h4></p>
+        <p><h4> Is this the situation you want to see? </h4></p>
+         <p><h4>YOU know how to solve this, Winston</h4></p>
+         <p><h4>Just go back and make a new choice.</h4></p>
+         <p><h4>Come on, Winston 
+         <font class=" text-danger">DO IT</font> !</h4></p>
+      </div>
+      <div class="modal-footer broder-none text-center" style="border-top: none;">
+        <button type="button " class="btn btn-default btn-xs" data-dismiss="modal" data-toggle="modal" data-target="#myModal14"> I'd rather DIE</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="reset()" >Well I will rechoose</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div ng-hide="isHide" class="error-bg " >
+	<h2 class="text-danger no-warp" ng-repeat="error in errors"> {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}} {{error.name}}</h2>
+	<div class="error-text text-center">
+		<p class="text-danger col" style="margin:auto;"> Well Winston, now you ruin your brain!</p>
+		<p>
+		<a type="button" class="btn btn-lg btn-danger-op" href="home.html" >Restart</a>
+		</p>
+	</div>
+</div>
+<div ng-hide="isStupid" class="error-bg flex-img" >
+	<div  class="sven-img" ng-repeat="sven in svens" style="background: url({{sven.src}}) center center / cover no-repeat;"></div>
+<div class="sven-text text-center">
+		<p class=" col" style="margin:auto;"> Sven is watching you</p>
+		<p>
+		
+	</div>
+	
+</div>
+</body>
+
+</html>
