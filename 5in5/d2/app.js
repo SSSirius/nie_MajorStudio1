@@ -16,7 +16,7 @@ $scope.isStupid= true;
 $scope.items=[];
 $scope.images = [];
 $scope.errors=[];
- $scope.svens=[];
+$scope.svens=[];
 // $scope.please = ' <h3>Good choice !<font class=" text-success"> Go back and find another one</font></h3>';
 
  for(var i= 0; i <1000; i++){
