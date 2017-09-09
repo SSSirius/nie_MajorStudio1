@@ -30,7 +30,7 @@ $scope.answers= [{index:0,q:"be real",po:"right"},
                   {index:19,q:"nose",po:"right"},
                   {index:20,q:" myself",po:"right"},
                   {index:21,q:" real",po:"right"},
-                  {index:22,q:" real",po:"right"}
+                  {index:22,q:" real",po:"right"},
                   {index:23,q:"indecision",po:"right"},
                   {index:24,q:" none",po:"right"},
                   {index:25,q:" into DT",po:"right"},
