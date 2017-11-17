@@ -123,7 +123,7 @@ $scope.myKeyup = function(e){
                $timeout(function(){
               $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
               },10) 
-            },1500)
+            },500)
 
         $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
            } else{
