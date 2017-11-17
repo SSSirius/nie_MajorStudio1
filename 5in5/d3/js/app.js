@@ -87,33 +87,52 @@ $scope.message="";
 $scope.ques.push($scope.questions[0]);
 // $scope.svens=[];
 $scope.makeanswer=function(){
-$scope.count+=1;
+// $scope.count+=1;
 $scope.type="";
 // if ($scope.type == ""){
 
+                $scope.message="";
+         $("input").focus();
+            $scope.ques.splice($scope.count*2+1,0,$scope.answers[$scope.count]);
+              
+            console.log($scope.answers[$scope.count]);
+          $timeout(function(){
+              
+              $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
+            },10)
+          $timeout(function(){
+              $scope.count+=1;
+              $scope.ques.push($scope.questions[$scope.count]);
+              
+          $timeout(function(){
+              $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
+              },10) 
+            },1500)
+
+        // $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
 // } else{
 //  $scope.message="in progress";
 //    $timeout(function(){
 //               $scope.message +=". "
 //               },500) 
 // };
-$scope.ques.push($scope.questions[$scope.count]);
+// $scope.ques.push($scope.questions[$scope.count]);
 $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
 // $('#chatbox')[0].scrollIntoView(); 
- console.log($('#chatbox'),$('#chatbox')[0].scrollTop);
+    console.log($scope.questions[$scope.count]);
   
 }
 $scope.myKeyup = function(e){
             var keycode = window.event?e.keyCode:e.which;
             if(keycode==13){
-                console.log('test');
+                // console.log('test');
                 $scope.type="";
                 $scope.message="";
          
-              $scope.ques.splice($scope.count*2+1,0,$scope.answers[$scope.count]);
+            $scope.ques.splice($scope.count*2+1,0,$scope.answers[$scope.count]);
               
-           
-         $timeout(function(){
+            console.log($scope.answers[$scope.count]);
+          $timeout(function(){
               
               $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
             },10)
@@ -123,7 +142,7 @@ $scope.myKeyup = function(e){
                $timeout(function(){
               $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
               },10) 
-            },500)
+            },1500)
 
         $('#chatbox')[0].scrollTop = $('#chatbox')[0].scrollHeight + 200;
            } else{

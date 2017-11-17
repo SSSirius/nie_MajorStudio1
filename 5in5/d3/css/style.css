@@ -1,7 +1,7 @@
 @font-face
 {
 font-family: myFirstFont;
-src: url('fonts/Pixel.ttf'),url('fonts/fzxs.ttf'); /* IE9+ */
+src: url('../fonts/Pixel.ttf'),url('../fonts/fzxs.ttf'); /* IE9+ */
 }
 *{font-family: myFirstFont ;}
 body{
